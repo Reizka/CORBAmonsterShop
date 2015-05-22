@@ -1,0 +1,23 @@
+module monster {
+
+  struct MonsterInfo {
+    wstring name;
+    long    id;
+    boolean owned;
+    string  img;
+    long    value;
+    long    player_id;
+  };
+
+  exception SQLError {
+    wstring message;
+  };
+
+  interface Monster {
+    MonsterInfo getAllMonster();
+    MonsterInfo getMonster (in long id) raises (SQLError);
+    MonsterInfo deleteMonster(in long id) raises (SQLError);
+    MonsterInfo updateMonster(in wstring name, in long id, in boolean owned, in wstring img, in long value, in long player_id) raises (SQLError);
+    MonsterInfo createMonster(in wstring name, in long id, in boolean owned, in wstring img, in long value, in long player_id );
+    };
+};

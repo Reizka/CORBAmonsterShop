@@ -1,0 +1,25 @@
+module player {
+
+  struct PlayerInfo {
+    wstring name;
+    wstring password;
+    long    phone;
+    long    calory_burned_total;
+    long    steps_taken;
+    long    exp;
+    long    weight;
+    long    monster_money;
+    wstring email;
+  };
+
+  exception SQLError {
+    wstring message;
+  };
+
+  interface Player {
+    PlayerInfo getPlayer (in long phone) raises (SQLError);
+    PlayerInfo deletePlayer(in long phone) raises (SQLError);
+    PlayerInfo updatePlayer(in wstring name, in long phone,in wstring password,in long calory_burned_total,in long steps_taken,in long exp,in long weight,in long monster_money,in wstring email ) raises (SQLError);
+    PlayerInfo createPlayer(in wstring name, in long phone,in wstring password,in long calory_burned_total,in long steps_taken,in long exp,in long weight,in long monster_money,in wstring email);
+    };
+};
